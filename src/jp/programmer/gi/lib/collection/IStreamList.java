@@ -1,1 +1,1 @@
-package jp.programmer.gi.lib.collection;public interface IStreamList<E> {}
+package jp.programmer.gi.lib.collection;import java.util.*;public interface IStreamList<E> {	Optional<E> get(int index);}
