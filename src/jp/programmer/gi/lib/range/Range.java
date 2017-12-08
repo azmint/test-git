@@ -12,8 +12,9 @@ public final class Range implements Iterable<Integer> {
 	private Range(int start, int end) {
 		this.start = start;
 		this.end = end;
-		List<Integer> indexs = new ArrayList<>();
-		for (int i = start; i < end; i++) indexs.add(i);
+		List<Integer> indexes = new ArrayList<>();
+		for (int i = start; i < end; i++) indexes.add(i);
+		this.list = IStreamList.of(indexes);
 	}
 
 	public static Range of(int start, int end) {
