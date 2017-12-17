@@ -14,7 +14,15 @@ public final class ValidateInt {
 	}
 
 	public ValidateInt ifMinus(String message) {
+		return this.ifSo(value -> value < 0, message);
+	}
 
+	public ValidateInt ifNotPlus(String message) {
+		return this.ifSo(value -> value <= 0, message);
+	}
+
+	public ValidateInt ifPlus(String message) {
+		return this.ifSo(value -> value > 0, message);
 	}
 
 	public ValidateInt ifSo(Predicate<Integer> predicate, String message) {
@@ -22,8 +30,14 @@ public final class ValidateInt {
 		return this;
 	}
 
-	public <R> R map(Function<Integer, ? extends R> mapper) {
-		return mapper.apply(this.value);
+	public <R> Validate<R> map(Function<? super Integer, ? extends R> mapper) {
+		R result = mapper.apply(this.value);
+		return Validate.of(result);
+	}
+
+	public ValidateInt mapToInt(Function<? super Integer, ? extends Integer> mapper) {
+		Integer result = mapper.apply(this.value);
+		return of(result);
 	}
 
 	public int get() {

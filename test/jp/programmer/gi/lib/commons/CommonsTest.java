@@ -1,0 +1,1 @@
+package jp.programmer.gi.lib.commons;import org.junit.*;import java.util.*;public class CommonsTest {	class Base {	}	class Sub extends Base {	}	@Test	public void cast() throws Exception {		Sub sub = new Sub();		Optional<Base> maybeBase = Commons.cast(sub, Base.class);		Assert.assertNotEquals(maybeBase, Optional.of(new Base()));	}}

@@ -9,7 +9,7 @@ public final class WithIndex<T> {
 		this.index = index;
 	}
 
-	public static <T> WithIndex of(T value, int index) {
+	public static <T> WithIndex<T> of(T value, int index) {
 		return new WithIndex<>(value, index);
 	}
 
@@ -29,16 +29,12 @@ public final class WithIndex<T> {
 		WithIndex<?> withIndex = (WithIndex<?>) o;
 
 		if (index != withIndex.index) return false;
-		return value != null
-				? value.equals(withIndex.value)
-				: withIndex.value == null;
+		return value != null ? value.equals(withIndex.value) : withIndex.value == null;
 	}
 
 	@Override
 	public int hashCode() {
-		int result = value != null
-				? value.hashCode()
-				: 0;
+		int result = value != null ? value.hashCode() : 0;
 		result = 31 * result + index;
 		return result;
 	}
